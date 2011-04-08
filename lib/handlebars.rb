@@ -1,5 +1,5 @@
-
 require 'v8'
+
 
 module Handlebars
   
@@ -7,7 +7,6 @@ module Handlebars
     cxt.load(File.expand_path(File.join(File.dirname(__FILE__), '..','js','lib','handlebars.js')))
     @handlebars = cxt['Handlebars']
   end
-  
   
   
   def compile(*args)
@@ -18,14 +17,12 @@ module Handlebars
   module_function :compile
   
   
-  
   def registerHelper(name, fn)
     Handlebars.module_eval do
       @handlebars.registerHelper(name, fn)
     end
   end
   module_function :registerHelper
-  
   
   
 end
