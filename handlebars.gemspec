@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "handlebars/version"
 
 Gem::Specification.new do |s|
-  s.name        = "handlebars_rb"
+  s.name        = "handlebars"
   s.version     = Handlebars::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Charles Lowell"]
