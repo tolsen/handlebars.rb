@@ -43,6 +43,13 @@ module Handlebars
     end
   end
   module_function :registerHelper
+
+  def registerPartial(name, template)
+    Handlebars.module_eval do
+      @handlebars.registerPartial(name, template)
+    end
+  end
+  module_function :registerPartial
   
   
 end
