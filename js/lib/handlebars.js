@@ -1220,7 +1220,7 @@ Handlebars.JavaScriptCompiler = function() {};
 
     invokeMustache: function(paramSize, original) {
       this.populateParams(paramSize, this.quotedString(original), "{}", null, function(nextStack, helperMissingString, id) {
-        this.source.push("else if(" + id + "=== undefined) { " + nextStack + " = helpers.helperMissing.call(" + helperMissingString + "); }");
+        this.source.push("else if(" + id + "=== undefined) { " + nextStack + " = helpers.helperMissing(" + helperMissingString + "); }");
         this.source.push("else { " + nextStack + " = " + id + "; }");
       });
     },
@@ -1230,7 +1230,7 @@ Handlebars.JavaScriptCompiler = function() {};
       var mainProgram = this.programExpression(guid);
 
       this.populateParams(paramSize, null, mainProgram, inverse, function(nextStack, helperMissingString, id) {
-        this.source.push("else { " + nextStack + " = helpers.blockHelperMissing.call(" + helperMissingString + "); }");
+        this.source.push("else { " + nextStack + " = helpers.blockHelperMissing(" + helperMissingString + "); }");
       });
     },
 
@@ -1281,7 +1281,7 @@ Handlebars.JavaScriptCompiler = function() {};
 
       nextStack = this.nextStack();
 
-      this.source.push("if(typeof " + id + " === 'function') { " + nextStack + " = " + id + ".call(" + paramString + "); }");
+      this.source.push("if(typeof " + id + " === 'function') { " + nextStack + " = " + id + "(" + paramString + "); }");
       fn.call(this, nextStack, helperMissingString, id);
     },
 
@@ -1289,7 +1289,7 @@ Handlebars.JavaScriptCompiler = function() {};
       var program = this.programExpression(guid);
 
       var blockMissingParams = ["context", this.topStack(), "this.noop", program];
-      this.pushStack("helpers.blockHelperMissing.call(" + blockMissingParams.join(", ") + ")");
+      this.pushStack("helpers.blockHelperMissing(" + blockMissingParams.join(", ") + ")");
     },
 
     invokePartial: function(context) {
