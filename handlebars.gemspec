@@ -21,6 +21,6 @@ Gem::Specification.new do |s|
   
   s.add_dependency "therubyrhino"
   s.add_dependency "multi_json"
-  s.add_dependency "yajl-ruby", "~> 0.7.8"
+  s.add_dependency "json_pure", "~> 1.7.4"
   s.add_development_dependency "rspec", ">= 2.0.0"
 end
